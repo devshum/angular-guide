@@ -1,1 +1,13 @@
-<p>recipe-item works!</p>
+<a href="#" class="list-group-item clearfix" style="margin-bottom: 16px">
+  <span class="pull-left">
+    <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
+    <p class="list-group-item-text">{{ recipe.description }}</p>
+  </span>
+
+  <span class="pull-right">
+    <img class="img-responsive" 
+         style="max-height: 50px" 
+         [src]="recipe.imageUrl" 
+         [alt]="recipe.name">
+  </span>
+</a>

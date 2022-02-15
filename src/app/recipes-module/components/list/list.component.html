@@ -6,22 +6,8 @@
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    <ng-container *ngFor="let recipe of recipes">
-      <a href="#" class="list-group-item clearfix">
-        <span class="pull-left">
-          <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
-          <p class="list-group-item-text">{{ recipe.description }}</p>
-        </span>
-  
-        <span class="pull-right">
-          <img class="img-responsive" 
-               style="max-height: 50px" 
-               [src]="recipe.imageUrl" 
-               [alt]="recipe.name">
-        </span>
-      </a>
-    </ng-container>
-  
-    <!-- <app-recipe></app-recipe> -->
+    <app-recipe *ngFor="let recipe of recipes"
+                [recipe]="recipe">
+    </app-recipe>
   </div>
 </div>

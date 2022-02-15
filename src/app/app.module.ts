@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RecipesModuleModule } from './recipes-module/recipes-module.module';
+import { RecipesModule } from './recipes-module/recipes-module.module';
+import { ShoppingListModule } from './shopping-list-module/shopping-list.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { RecipesModuleModule } from './recipes-module/recipes-module.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RecipesModuleModule
+    RecipesModule,
+    ShoppingListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
