@@ -1,0 +1,13 @@
+<div class="row" style="margin-top: 24px">
+  <div class="col-xs-10">
+    <app-edit></app-edit>
+    <hr>
+    <ul class="list-group">
+      <button *ngFor="let ingredient of ingredients"
+              class="list-group-item" 
+              style="cursor: pointer">
+              {{ ingredient.name }}  {{ ingredient.amount }}
+      </button>
+    </ul>
+  </div>
+</div>
