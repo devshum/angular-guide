@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { EditComponent } from './components/edit/edit.component';
 import { ShoppingListComponent } from './containers/shopping-list/shopping-list.component';
 
@@ -9,7 +10,8 @@ import { ShoppingListComponent } from './containers/shopping-list/shopping-list.
     ShoppingListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     ShoppingListComponent
