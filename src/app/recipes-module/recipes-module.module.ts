@@ -5,6 +5,7 @@ import { ListComponent } from './components/list/list.component';
 import { RecipesComponent } from './containers/recipes/recipes.component';
 import { DetailsComponent } from './components/details/details.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
+import { DropdownDirective } from '../core/directives/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     ListComponent,
     RecipesComponent,
     DetailsComponent,
-    RecipeComponent
+    RecipeComponent,
+    DropdownDirective
   ],
   imports: [
     CommonModule
