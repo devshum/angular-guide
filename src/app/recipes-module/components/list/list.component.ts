@@ -8,13 +8,8 @@ import { Recipe } from 'src/app/core/models/recipe.interface';
 })
 export class ListComponent implements OnInit {
   @Input() recipes: Recipe[];
-  @Output() recipeWasSelected: EventEmitter<Recipe> = new EventEmitter<Recipe>();
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onRecipeSelected(recipe: Recipe) {
-    this.recipeWasSelected.emit(recipe);
   }
 }
