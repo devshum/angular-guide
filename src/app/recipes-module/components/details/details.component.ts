@@ -1,7 +1,7 @@
 import { RecipesService } from 'src/app/core/services/recipes.service';
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/core/models/recipe.interface';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -14,7 +14,8 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     private _recipeService: RecipesService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router
   ) 
   { }
 
@@ -28,5 +29,9 @@ export class DetailsComponent implements OnInit {
 
   onAddToShoppingList() {
     this._recipeService.addIngredientsToShopingList(this.recipe.ingredients);
+  }
+
+  onEditRecipe() {
+    this._router.navigate(['edit'], { relativeTo: this._activatedRoute })
   }
 }
