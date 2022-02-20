@@ -8,6 +8,7 @@ import { RecipeComponent } from './components/recipe/recipe.component';
 import { DropdownDirective } from '../core/directives/dropdown.directive';
 import { AppRoutingModule } from '../app-routing.module';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -16,7 +17,8 @@ import { RecipeStartComponent } from './recipe-start/recipe-start.component';
     DetailsComponent,
     RecipeComponent,
     DropdownDirective,
-    RecipeStartComponent
+    RecipeStartComponent,
+    RecipeEditComponent
   ],
   imports: [
     CommonModule,

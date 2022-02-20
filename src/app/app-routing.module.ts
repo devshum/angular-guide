@@ -1,3 +1,4 @@
+import { RecipeEditComponent } from './recipes-module/recipe-edit/recipe-edit.component';
 import { RecipeStartComponent } from './recipes-module/recipe-start/recipe-start.component';
 import { ShoppingListComponent } from './shopping-list-module/containers/shopping-list/shopping-list.component';
 import { RecipesComponent } from './recipes-module/containers/recipes/recipes.component';
@@ -11,7 +12,9 @@ const routes: Routes = [
 
     children: [
     { path: '', component: RecipeStartComponent },
-    { path: ':id', component: DetailsComponent }
+    { path: 'new', component: RecipeEditComponent },
+    { path: ':id', component: DetailsComponent },
+    { path: ':id/edit', component: RecipeEditComponent }
   ] },
 
   { path: 'shopping-list', component: ShoppingListComponent }
