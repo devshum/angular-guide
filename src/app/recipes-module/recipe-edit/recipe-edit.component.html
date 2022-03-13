@@ -3,7 +3,9 @@
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-success">Save</button>
+          <button type="submit" 
+                  class="btn btn-success"
+                  [disabled]="!recipeForm.valid">Save</button>
           <button type="button" class="btn btn-danger">Cancel</button>
         </div>
       </div>
@@ -58,7 +60,8 @@
       <div class="row">
         <div class="col-xs-12" formArrayName="ingredients">
           <div class="row" 
-              *ngFor="let ingredientCtrl of controls; let i = index" [formGroupName]="i">
+              *ngFor="let ingredientCtrl of controls; let i = index" [formGroupName]="i"
+              style="margin-bottom: 24px">
             <div class="col-xs-8">
               <input 
                 type="text" 
@@ -75,7 +78,16 @@
               <button class="btn btn-danger">x</button>
             </div>
           </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="button"
+                      class="btn btn-success" 
+                      (click)="onAddIngredient()">Add ingredint</button>
+            </div>
+          </div>
         </div>
+       
       </div>
     </form>
   </div>
