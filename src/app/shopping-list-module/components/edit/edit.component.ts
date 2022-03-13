@@ -12,8 +12,8 @@ import { Subject } from 'rxjs';
 })
 export class EditComponent implements OnInit, OnDestroy {
   @ViewChild('form', { static: false }) form: NgForm;
+  public editMode = false;
   private _unsusbscribe = new Subject();
-  private _editMode = false;
   private _editedItemIndex: number;
   private _editedItem: Ingredient;
 
@@ -22,7 +22,7 @@ export class EditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this._sl.startedEditing.pipe(takeUntil(this._unsusbscribe)).subscribe((index: number) => {
       this._editedItemIndex = index;
-      this._editMode = true;
+      this.editMode = true;
       this._editedItem = this._sl.getIngredient(index);
 
       this.form.setValue({
@@ -32,21 +32,29 @@ export class EditComponent implements OnInit, OnDestroy {
     });
   }
 
-  public onAddItem(form: NgForm) {
+  public onSubmit(form: NgForm) {
     const value = form.value;
 
     const newIngredient = { name: value.name, 
                             amount: value.amount}
 
-    this._sl.addIngredient(newIngredient);
+    if (this.editMode) {
+      this._sl.updateIngredient(this._editedItemIndex, newIngredient);
+    } else {
+      this._sl.addIngredient(newIngredient);
+    }
+
+    this.editMode = false;
+    form.reset();
   }
 
   public onDeleteItem() {
-
+    this._sl.deleteIngredient(this._editedItemIndex);
   }
 
   public onClearItem() {
-
+    this.form.reset();
+    this.editMode = false;
   }
 
   ngOnDestroy(): void {
