@@ -9,6 +9,7 @@ import { DropdownDirective } from '../core/directives/dropdown.directive';
 import { AppRoutingModule } from '../app-routing.module';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -22,7 +23,8 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,
