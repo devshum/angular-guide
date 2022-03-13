@@ -3,9 +3,10 @@
     <app-edit></app-edit>
     <hr>
     <ul class="list-group">
-      <button *ngFor="let ingredient of ingredients"
+      <button *ngFor="let ingredient of ingredients; let i = index;"
               class="list-group-item" 
-              style="cursor: pointer">
+              style="cursor: pointer"
+              (click)="onEditItem(i)">
               {{ ingredient.name }}  {{ ingredient.amount }}
       </button>
     </ul>
