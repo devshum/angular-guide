@@ -10,22 +10,29 @@ import { Subject } from 'rxjs';
 export class RecipesService {
   public recipesChanged: Subject<Recipe[]> = new Subject<Recipe[]>();
   
-  private _recipes: Recipe[] = [
-    {
-      name: 'Test recipe',
-      description: 'Test description',
-      imageUrl: 'https://thumbs.dreamstime.com/b/gourmet-tasty-italian-penne-pasta-plate-close-up-spicy-tomato-herbs-white-served-top-wooden-table-58667798.jpg',
-      ingredients: [{ name: 'Test1', amount: 4 }]
-    },
-    {
-      name: 'Test recipe',
-      description: 'Test description',
-      imageUrl: 'https://thumbs.dreamstime.com/b/gourmet-tasty-italian-penne-pasta-plate-close-up-spicy-tomato-herbs-white-served-top-wooden-table-58667798.jpg',
-      ingredients: [{ name: 'Test2', amount: 16  }]
-    }
-  ];
+  // private _recipes: Recipe[] = [
+  //   {
+  //     name: 'Test recipe',
+  //     description: 'Test description',
+  //     imageUrl: 'https://thumbs.dreamstime.com/b/gourmet-tasty-italian-penne-pasta-plate-close-up-spicy-tomato-herbs-white-served-top-wooden-table-58667798.jpg',
+  //     ingredients: [{ name: 'Test1', amount: 4 }]
+  //   },
+  //   {
+  //     name: 'Test recipe',
+  //     description: 'Test description',
+  //     imageUrl: 'https://thumbs.dreamstime.com/b/gourmet-tasty-italian-penne-pasta-plate-close-up-spicy-tomato-herbs-white-served-top-wooden-table-58667798.jpg',
+  //     ingredients: [{ name: 'Test2', amount: 16  }]
+  //   }
+  // ];
+
+  private _recipes: Recipe[] = [];
 
   constructor(private _sl: ShoppingListService) { }
+
+  setRecipes(recipes: Recipe[]) {
+    this._recipes = recipes;
+    this.recipesChanged.next(this._recipes.slice());
+  }
 
   getRecipes() {
     return this._recipes.slice();
