@@ -7,7 +7,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './recipes-module/components/details/details.component';
 
 const routes: Routes = [
-  { path: '', component: RecipesComponent },
+  { path: '',
+    pathMatch: 'full',
+    redirectTo: 'recipes'
+  },
   { path: 'recipes', component: RecipesComponent, 
 
     children: [
