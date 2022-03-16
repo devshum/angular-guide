@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://recipe-book-1b231-default-rtdb.europe-west1.firebasedatabase.app/'
+  apiUrl: 'https://recipe-book-1b231-default-rtdb.europe-west1.firebasedatabase.app/recipes.json'
 };
 
 /*
