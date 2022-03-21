@@ -12,8 +12,17 @@
       </div>
 
       <div>
-        <button class="btn btn-primary" style="margin-right: 1rem;">Sign Up</button>
-        <button class="btn btn-primary">Swith to Login</button>
+        <button class="btn btn-primary" 
+                style="margin-right: 1rem;"
+                type="submit">
+                {{ isLoginMode ? 'Login' : 'Sign up' }}
+        </button>
+
+        <button class="btn btn-primary" 
+                (click)="onSwitchMode()"
+                type="button">
+                Swith to  {{ isLoginMode ? 'Sign up' : 'Login' }}
+        </button>
       </div>
 
     </form>
