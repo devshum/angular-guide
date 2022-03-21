@@ -17,8 +17,8 @@ export class AuthService {
   constructor(private _http: HttpClient) { }
 
   signUp(email: string, password: string): Observable<AuthResponse> {
-    const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyBsl0FOQlK2BU-CRmsJjl5DyYcXzOSD0ok';
+    const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBsl0FOQlK2BU-CRmsJjl5DyYcXzOSD0ok';
 
-    return this._http.post<AuthResponse>(url, { email, password, returnSecureToken: true})
+    return this._http.post<AuthResponse>(url, { email: email, password: password, returnSecureToken: true})
   }
 }
