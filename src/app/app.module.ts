@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { RecipesModule } from './recipes-module/recipes-module.module';
 import { ShoppingListModule } from './shopping-list-module/shopping-list.module';
 import { AuthComponent } from './auth/auth/auth.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AuthComponent } from './auth/auth/auth.component';
     BrowserModule,
     AppRoutingModule,
     RecipesModule,
-    ShoppingListModule
+    ShoppingListModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
