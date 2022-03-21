@@ -4,10 +4,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipesModule } from './recipes-module/recipes-module.module';
 import { ShoppingListModule } from './shopping-list-module/shopping-list.module';
+import { AuthComponent } from './auth/auth/auth.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
