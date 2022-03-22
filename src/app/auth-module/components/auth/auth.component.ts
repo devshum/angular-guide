@@ -1,4 +1,4 @@
-import { AuthService } from './../../core/services/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
   isLoginMode = true;
+  isLoading = false;
+  error: string = null;
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -27,13 +29,17 @@ export class AuthComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
+    this.isLoading = true;
     if(this.isLoginMode) {
       // ...
     } else {
       this._authService.signUp(email, password).subscribe(resData => {
         console.log(resData);
-      }, error => {
-        console.log(error);
+        this.isLoading = false;
+      }, errorMessage => {
+        console.log(errorMessage);
+        this.error = errorMessage;
+        this.isLoading = false;
       });
     }
 
