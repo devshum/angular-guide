@@ -1,10 +1,11 @@
+import { AuthService } from './auth.service';
 import { environment } from './../../../environments/environment';
 import { RecipesService } from 'src/app/core/services/recipes.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe.interface';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { exhaustMap, map, take } from 'rxjs/operators'
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +14,8 @@ export class DataStorageService {
 
   constructor(
     private _http: HttpClient,
-    private _recipesService: RecipesService
+    private _recipesService: RecipesService,
+    private _authService: AuthService
   ) { }
 
   storeRecipes(): Observable<Recipe[]> {
@@ -22,15 +24,26 @@ export class DataStorageService {
   }
 
   fetchRecipes(): void {
-    this._http.get<Recipe[]>(this._apiUrl)
-    .pipe(map(recipes => {
-      return recipes.map(recipe => {
-        return { ...recipe, ingredients: recipe.ingredients ? recipe.ingredients : [] }
-      })
-    }))
-    .subscribe(recipes => {
+    this._authService.user.pipe(
+      take(1), 
+      exhaustMap((user: any) => {
+        return this._http.get<Recipe[]>(
+          this._apiUrl,
+          {
+            params: new HttpParams().set('auth', user.token)
+          }
+        );
+      }),
+      map((recipes: any) => {
+        return recipes.map(recipe => {
+          return { 
+            ...recipe, 
+            ingredients: recipe.ingredients ? recipe.ingredients : [] 
+          };
+        });
+      })).subscribe(recipes => {
       this._recipesService.setRecipes(recipes);
       console.log(recipes);
-    });
+    })
   }
 }
