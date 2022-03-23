@@ -1,7 +1,7 @@
 import { AuthResponse, AuthService } from '../../../core/services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -18,7 +18,6 @@ export class AuthComponent implements OnInit {
   }
 
   constructor(private _authService: AuthService) { }
-
   ngOnInit(): void {
   }
 
