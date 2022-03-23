@@ -24,26 +24,19 @@ export class DataStorageService {
   }
 
   fetchRecipes(): void {
-    this._authService.user.pipe(
-      take(1), 
-      exhaustMap((user: any) => {
-        return this._http.get<Recipe[]>(
-          this._apiUrl,
-          {
-            params: new HttpParams().set('auth', user.token)
-          }
-        );
-      }),
-      map((recipes: any) => {
-        return recipes.map(recipe => {
-          return { 
-            ...recipe, 
-            ingredients: recipe.ingredients ? recipe.ingredients : [] 
-          };
-        });
-      })).subscribe(recipes => {
-      this._recipesService.setRecipes(recipes);
-      console.log(recipes);
-    })
+      this._http.get<Recipe[]>(this._apiUrl)
+        .pipe(
+          map((recipes: any) => {
+            return recipes.map(recipe => {
+              return { 
+                ...recipe, 
+                ingredients: recipe.ingredients ? recipe.ingredients : [] 
+              };
+            });
+          })
+        ).subscribe(recipes => {
+        this._recipesService.setRecipes(recipes);
+        console.log(recipes);
+      });
   }
 }
