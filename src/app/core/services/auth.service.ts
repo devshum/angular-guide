@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 export interface AuthResponse {
   idToken:	string;
@@ -20,7 +21,10 @@ export interface AuthResponse {
 export class AuthService {
   public user = new BehaviorSubject<User>(null);
   
-  constructor(private _http: HttpClient) { }
+  constructor(
+    private _http: HttpClient,
+    private _router: Router
+    ) { }
 
   signUp(email: string, password: string): Observable<AuthResponse> {
     const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBsl0FOQlK2BU-CRmsJjl5DyYcXzOSD0ok';
@@ -55,6 +59,12 @@ export class AuthService {
       })
     );
   }
+
+  logout() {
+    this.user.next(null);
+    this._router.navigate(['/auth']);
+  }
+
   private handleAuth(email: string, userId: string, token: string, expIn: string) {
     const expDate = new Date(
       new Date().getTime() + Number(expIn) + 1000
