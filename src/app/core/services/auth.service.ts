@@ -1,4 +1,4 @@
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
@@ -18,7 +18,7 @@ export interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  public user = new Subject<User>();
+  public user = new BehaviorSubject<User>(null);
   
   constructor(private _http: HttpClient) { }
 
